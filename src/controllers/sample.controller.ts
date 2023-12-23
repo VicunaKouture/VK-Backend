@@ -103,6 +103,18 @@ const update = async (req: Request, res: Response) => {
 
 const remove = async (req: Request, res: Response) => {
   try {
+    if (!req.query.id)
+      return res.status(400).json({
+        status: false,
+        message: "Id not provided",
+      });
+
+    if (typeof req.query.id !== "string")
+      return res.status(400).json({
+        status: false,
+        message: "Id not a string",
+      });
+
     const sampleExists = await sampleRepo.getById(req.query.id);
     if (!sampleExists) {
       return res.status(404).json({

@@ -9,52 +9,50 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Sample = exports.ExampleStatus = void 0;
+exports.User = exports.UserRole = void 0;
 const typeorm_1 = require("typeorm");
-var ExampleStatus;
-(function (ExampleStatus) {
-    ExampleStatus["SUCCESS"] = "SUCCESS";
-    ExampleStatus["FAILED"] = "FAILED";
-    ExampleStatus["PENDING"] = "PENDING";
-})(ExampleStatus || (exports.ExampleStatus = ExampleStatus = {}));
-let Sample = class Sample {
+var UserRole;
+(function (UserRole) {
+    UserRole["CUSTOMER"] = "customer";
+    UserRole["DESIGNER"] = "designer";
+})(UserRole || (exports.UserRole = UserRole = {}));
+let User = class User extends typeorm_1.BaseEntity {
 };
-exports.Sample = Sample;
+exports.User = User;
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)("uuid"),
     __metadata("design:type", String)
-], Sample.prototype, "id", void 0);
+], User.prototype, "id", void 0);
 __decorate([
-    (0, typeorm_1.Column)({
-        type: "int",
-        generated: "increment",
+    (0, typeorm_1.PrimaryColumn)({
+        unique: true,
     }),
-    __metadata("design:type", Number)
-], Sample.prototype, "sno", void 0);
+    __metadata("design:type", String)
+], User.prototype, "email", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ nullable: true }),
-    __metadata("design:type", Number)
-], Sample.prototype, "quantity", void 0);
+    (0, typeorm_1.Column)({}),
+    __metadata("design:type", String)
+], User.prototype, "name", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ nullable: true }),
-    __metadata("design:type", Boolean)
-], Sample.prototype, "approval", void 0);
+    (0, typeorm_1.Column)({}),
+    __metadata("design:type", String)
+], User.prototype, "password", void 0);
 __decorate([
     (0, typeorm_1.Column)({
         type: "enum",
-        enum: ExampleStatus,
-        default: ExampleStatus.PENDING,
+        enum: UserRole,
+        default: UserRole.CUSTOMER,
     }),
     __metadata("design:type", String)
-], Sample.prototype, "status", void 0);
+], User.prototype, "role", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)({ type: "timestamp" }),
     __metadata("design:type", Date)
-], Sample.prototype, "createdAt", void 0);
+], User.prototype, "createdAt", void 0);
 __decorate([
     (0, typeorm_1.UpdateDateColumn)({ type: "timestamp" }),
     __metadata("design:type", Date)
-], Sample.prototype, "updatedAt", void 0);
-exports.Sample = Sample = __decorate([
-    (0, typeorm_1.Entity)()
-], Sample);
+], User.prototype, "updatedAt", void 0);
+exports.User = User = __decorate([
+    (0, typeorm_1.Entity)("users")
+], User);

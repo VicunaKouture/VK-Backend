@@ -8,7 +8,7 @@ import {
 
 import { DataSource } from "typeorm";
 import { Sample } from "../models/sample.model";
-
+import { User } from "../models/user.model";
 export const ds = new DataSource({
   type: "postgres",
   host: DB_HOST,
@@ -17,7 +17,7 @@ export const ds = new DataSource({
   password: DB_PASSWORD,
   database: DATABASE,
   // ssl: true,
-  entities: [Sample],
+  entities: [Sample, User],
   logging: true,
   synchronize: true,
 });
