@@ -11,6 +11,10 @@ const getByEmail = async (email: string) => {
   });
 };
 
+const save = async (user: User) => {
+  return await ds.getRepository(User).save(user);
+};
+
 const register = async (user: RegisterUserDto) => {
   return await ds.getRepository(User).save(user);
 };

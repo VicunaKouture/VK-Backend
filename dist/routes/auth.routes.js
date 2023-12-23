@@ -2,7 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const auth_controller_1 = require("../controllers/auth.controller");
+const passport_1 = require("../config/passport");
 const router = (0, express_1.Router)();
 router.post("/login", auth_controller_1.authController.login);
 router.post("/register", auth_controller_1.authController.register);
+router.get("/google", passport_1.googleAuth.authenticate);
+router.get("/google/callback", passport_1.googleAuth.googleCallback, auth_controller_1.authController.googleCallback);
 exports.default = router;

@@ -99,7 +99,15 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         });
     }
 });
+const googleCallback = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log("req", req);
+    console.log("user", req.user);
+    console.log("token", req.user.token);
+    const token = req.user.token;
+    return res.redirect(`${process.env.FRONTEND_URL}googleToken`);
+});
 exports.authController = {
     register,
     login,
+    googleCallback,
 };

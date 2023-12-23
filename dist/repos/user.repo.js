@@ -19,6 +19,9 @@ const getByEmail = (email) => __awaiter(void 0, void 0, void 0, function* () {
         },
     });
 });
+const save = (user) => __awaiter(void 0, void 0, void 0, function* () {
+    return yield datasource_1.ds.getRepository(user_model_1.User).save(user);
+});
 const register = (user) => __awaiter(void 0, void 0, void 0, function* () {
     return yield datasource_1.ds.getRepository(user_model_1.User).save(user);
 });

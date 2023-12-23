@@ -101,7 +101,16 @@ const login = async (req: Request, res: Response) => {
   }
 };
 
+const googleCallback = async (req: Request, res: Response) => {
+  console.log("req", req);
+  console.log("user", req.user);
+  console.log("token", req.user.token);
+  const token = req.user.token;
+  return res.redirect(`${process.env.FRONTEND_URL}googleToken`);
+};
+
 export const authController = {
   register,
   login,
+  googleCallback,
 };

@@ -2,7 +2,10 @@ import { configDotenv } from "dotenv";
 import express, { Express, Request, Response } from "express";
 import cors from "cors";
 import { ds } from "./utils/datasource";
+import "./config/passport";
+// import "./middleware/checkJWT";
 import bodyParser from "body-parser";
+import "./types";
 configDotenv();
 
 import sampleRoutes from "./routes/sample.routes";
