@@ -4,6 +4,7 @@ exports.ds = void 0;
 const config_1 = require("../config/config");
 const typeorm_1 = require("typeorm");
 const sample_model_1 = require("../models/sample.model");
+const user_model_1 = require("../models/user.model");
 exports.ds = new typeorm_1.DataSource({
     type: "postgres",
     host: config_1.DB_HOST,
@@ -11,7 +12,7 @@ exports.ds = new typeorm_1.DataSource({
     username: config_1.DB_USERNAME,
     password: config_1.DB_PASSWORD,
     database: config_1.DATABASE,
-    entities: [sample_model_1.Sample],
+    entities: [sample_model_1.Sample, user_model_1.User],
     logging: true,
     synchronize: true,
 });

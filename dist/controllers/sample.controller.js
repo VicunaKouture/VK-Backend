@@ -111,6 +111,16 @@ const update = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 });
 const remove = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        if (!req.query.id)
+            return res.status(400).json({
+                status: false,
+                message: "Id not provided",
+            });
+        if (typeof req.query.id !== "string")
+            return res.status(400).json({
+                status: false,
+                message: "Id not a string",
+            });
         const sampleExists = yield sample_repo_1.sampleRepo.getById(req.query.id);
         if (!sampleExists) {
             return res.status(404).json({
